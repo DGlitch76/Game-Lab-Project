@@ -35,7 +35,8 @@ d) walk and flying states controled by keypress - turning suite boosters on and 
 
 
 (*) The walk state shall only be tried after and if flying mode full game works. 
-    The walking state part of the game should work as any other horizontal platform game coding
+    The walking state part of the game should work as any other horizontal platform game coding.
+    
 
 -----------------------------------------------------------------------------------
 
