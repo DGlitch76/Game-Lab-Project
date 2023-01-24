@@ -16,18 +16,22 @@
 <body>
 
     <div class="main-container">
-        <div class="header-nav">
+        <div class="landing-page" id="landing-page">
+
+            <img src="/images/avenger-logo-png.png" id="logo" class="logo">
+
             <h1>Stark Vs Brain</h1>
-            <p>Earth is being invaded by a Galactic Legion of Brainctopus Soldiers!!
-                Brainctopus have searched the universe for millenium, looking for the their lost tribe, sent to space while apocalyptic events
-                threaten their very existance during that period in history. Dinassours still live around that time. Now they're here,
+            <h2>Earth is being invaded by a Galactic Legion of Brainctopus Soldiers!!</h2>
+            <p> Brainctopus have searched the universe for millenium, looking for the their lost tribe, sent to space while apocalyptic events
+                threaten their very existance during that period in history. Dinassours still walked the Earth around that time. Now they're here,
                 to conquer our planet and save their lost tribe from our plates!!</p>
-            <img src="/images/StarkVsBrain_Brain_START.gif">
+            <img src="/images/StarkVsBrain_Brain_START.gif" id="players" class="players">
             <!-- logo | menu -->
             <!-- Instructions -->
+            <button onclick="startGame()"><h2>Start</h2></button>
         </div>
 
-        <div class="game-div">
+        <div class="game-div" id="game-div">
             <!-- Should contain game info | playerName | Health | Score-->
             <canvas id="canvas" class="game-canvas"></canvas>
             <!-- Should collect playerName + Score and show at game win HighScore <ul> -->

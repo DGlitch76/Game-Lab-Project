@@ -1,9 +1,9 @@
 
 /* --- Import Fonts --- */
 
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap'); /*.main-container *h1*/
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap'); /*.main-container h2*/
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap'); /*.main-container p*/
 
 
 /* --- body settings --- */
@@ -20,6 +20,14 @@ height: 100vh;
 
 /* --- main cointainer div --- */
 
+.logo {
+    width: 20%;
+}
+.players {
+    width: 40%;
+}
+
+
 .main-container{
     width: 100vw;
     margin: auto;
@@ -30,6 +38,13 @@ height: 100vh;
     font-weight: bold;
     font-size: 5.5rem;
 }
+
+.main-container h2 {
+    font-family: 'Rock Salt', cursive;
+    font-weight: bold;
+    font-size: 1.25em;
+}
+
 
 .main-container p {
     font-family: 'Gloria Hallelujah', cursive;

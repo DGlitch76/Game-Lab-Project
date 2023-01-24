@@ -3,6 +3,14 @@
 const gameCanvas = document.querySelector('canvas')
 const ctx = gameCanvas.getContext('2d')
 
+//Getting Divs for display style (hide - show divs - game states)
+let landingPage = document.getElementById('landing-page');
+let startButton = document.getElementById('game-div');
+startButton.style.display = "none";
+
+
+
+
 gameCanvas.width = 64 * 16; //1024;
 gameCanvas.height = 64 * 9; //576;
 
@@ -11,6 +19,20 @@ ctx.fillStyle = 'white';
 ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
 
 
+// States Control // Landing page - Game Page - Game Over
+
+function startGame() {
+    landingPage.style.display = "block";
+    if (startButton.style.display = "none") {
+        startButton.style.display = "block";
+        landingPage.style.display = "none";
+    } else {
+        startButton.style.display = "none";
+        landingPage.style.display = "block";
+    }
+  }
+
+  
 //Player - needs
 //position (object with x and y) +
 //size (object with width and height) +
@@ -277,3 +299,6 @@ addEventListener('keyup', ({ keyCode }) => {
     }
 
 });
+
+
+
