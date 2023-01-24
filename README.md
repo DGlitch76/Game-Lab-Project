@@ -1,6 +1,6 @@
-# Game-Lab-Project Jan2023 - second commit -"wrapping my brain around this project"
+# Game-Lab-Project Jan2023 
 
-Game General Guidelines -----------------------------------------------------------
+Game General Guidelines ---------- ---------- ---------- ----
 
 1) Mashup between the canvas car game and Space Invaders with an horizontal flow. 
    Players can fly and walk... or just fly (= car game)
@@ -16,11 +16,27 @@ Game General Guidelines --------------------------------------------------------
    a) DC Characters
    b) Some City Buildings
 
-* Choice made on the Landing/Splash Page
+* Choice made on the Landing/Splash Page - Project Goal - option (2.a) working + 1 Character.
+  Background (b) and (c) + other characters "Bonus" coding.
 
------------------------------------------------------------------------------------
 
-Character (player === Ironman) ----------------------------------------------------
+  ---------- ---------- ---------- ---------- ---------- ------
+  myMVP ---------- ---------- ---------- ---------- --------- -
+
+  Player moves up and down.
+
+  Arrows Left and Right scroll de brackground layers right to left. (left right motion illusion)
+  Left and right translates as forward and backwards.
+
+  Enemies flow from right to left in random positions.
+
+  Both player and enemies have fire attacks.
+
+  Player has a defense state.
+
+
+---------- ---------- ---------- ---------- ---------- ------
+Character (player === Ironman) ---------- ---------- --------
 
 The character should have two "states". Walking(*) and flying.
 Ironman should:
@@ -36,14 +52,13 @@ d) walk and flying states controled by keypress - turning suite boosters on and 
 
 (*) The walk state shall only be tried after and if flying mode full game works. 
     The walking state part of the game should work as any other horizontal platform game coding.
-    
 
------------------------------------------------------------------------------------
 
-Credits for Graphics --------------------------------------------------------------
+---------- ---------- ---------- ---------- ---------- ------
+Credits for Graphics ---------- ---------- ---------- -------
 
-Backgrounds - Freepik @vectorpocket 
-
+Backgrounds - freepik.com/author/vectorpocket
+Characters - deviantart.com/z-studios
 
 
 

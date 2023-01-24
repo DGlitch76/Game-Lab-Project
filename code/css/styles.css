@@ -1,0 +1,26 @@
+
+
+/* --- body settings --- */
+
+body{
+background: linear-gradient(to top, #240b36, #c31432);
+background-repeat: no-repeat;
+background-size: cover;
+margin: 0;
+width: 100vw;
+height: 100vh;
+}
+
+/* --- main cointainer div --- */
+
+.main-container{
+    width: 100vw;
+    margin: auto;
+}
+
+/* --- canvas div --- */
+
+.game-canvas {
+    background-color: antiquewhite;
+    margin: auto;
+}
