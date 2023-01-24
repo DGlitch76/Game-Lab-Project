@@ -3,8 +3,8 @@
 const gameCanvas = document.querySelector('canvas')
 const ctx = gameCanvas.getContext('2d')
 
-gameCanvas.width = 64*16; //1024;
-gameCanvas.height = 64*9; //576;
+gameCanvas.width = 64 * 16; //1024;
+gameCanvas.height = 64 * 9; //576;
 
 // canvas - Game Area
 ctx.fillStyle = 'white';
@@ -24,13 +24,7 @@ ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
 const gravity = .25;
 //const speed = 0.15;  -- fail
 
-const bgLayer0 = new Image();
-bgLayer0.src = '/images/background_00.jpg';
-
-const ironMan = new Image();
-ironMan.src = '/images/ironMan_static.png';
-
-
+let playerCheck = 100
 
 
 // Players 
@@ -52,7 +46,7 @@ class Player {
 
     draw() {
 
-        ctx.drawImage(ironMan,this.position.x, this.position.y, this.size.width, this.size.height)
+        ctx.drawImage(ironMan, this.position.x, this.position.y, this.size.width, this.size.height)
     }
 
     update() {
@@ -61,7 +55,7 @@ class Player {
         this.position.x += this.velocity.x;
 
         // Basic Gravity Simulation  by Chris Courses
-        if (this.position.y < gameCanvas.height - this.size.height) { //should be reviewed as it's no the same as Chris
+        if (this.position.y + this.size.height + this.velocity.y <= gameCanvas.height) { //should be reviewed as it's no the same as Chris
             this.velocity.y += gravity;
         } else {
             this.velocity.y = 0;
@@ -69,20 +63,46 @@ class Player {
     }
 }
 
-//Should create background layers for parallax effect --- phase0 copied from class Player --- needs adaptation
-
-class Backgrounds {
-    constructor(image) {
-        this.image = image,
-
+class Enemie {
+    constructor() {
         this.position = {
-            x: 100,
-            y: 100,
+            x: 800,
+            y: 250,
         }
         this.size = {
-            width: 100,
+            width: 150,
             height: 200,
         }
+        this.velocity = {
+            x: 0,
+            y: 0,
+        }
+    }
+
+    draw() {
+
+        ctx.drawImage(brain, this.position.x, this.position.y, this.size.width, this.size.height)
+    }
+
+    update() {
+        this.position.x -= 1.5
+
+    }
+}
+
+//Should create background layers for parallax effect --- phase0 copied from class Player --- needs adaptation
+
+class Background {
+    constructor() {
+        this.position = {
+            x: -10,
+            y: -10,
+        }
+        this.size = {
+            width: 6467,
+            height: 614,
+        }
+
         this.cameraPan = {
             x: 0,
             y: 0,
@@ -91,33 +111,71 @@ class Backgrounds {
 
     draw() {
 
-       
+         ctx.drawImage(baseBackground, this.position.x, this.position.y, this.size.width, this.size.height)
+
     }
 
     update() {
 
-        this.position.y += this.velocity.y;
-        this.position.x += this.velocity.x;
+        this.position.y += this.cameraPan.y;
+        this.position.x += this.cameraPan.x;
+
+        if (player.position.x + player.size.width >= gameCanvas.width / 2){
+            this.cameraPan.x = -10;
+        } else if (player.position.x < 50 || this.position.x < 1) {
+            this.cameraPan.x = 10;
+// trying to set pan limits
+        }else{ //if (this.position.x < - 5000 || player.position.x + player.size.width > background.size.width && playerCheck <= gameCanvas.width * 2){
+            this.cameraPan.x = 0;
 
     }
 }
+}
 
 
+const baseBackground = new Image();
+baseBackground.src = '/images/background.png';
+
+const ironMan = new Image();
+ironMan.src = '/images/ironMan_static.png';
+
+const brain = new Image();
+brain.src = '/images/brain_static.png';
 
 const player = new Player();
+
+const enemie = new Enemie(); 
+
+const background = new Background();
+
 
 function animate() {
     window.requestAnimationFrame(animate);
     //console.log('GO GO GO')
 
-
     ctx.fillStyle = 'white';
     ctx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
 
-    ctx.drawImage (bgLayer0, 0, 0, bgLayer0.width, bgLayer0.height)
+// console.log(playerCheck)
+
+// if(background.position.x < 0){
+//     playerCheck -= .35
+// }else if (background.position.x > 0){
+//     playerCheck += .35
+// }
+
+
+//     if (playerCheck  > 0 ){
+
+    background.update();
+    background.draw();
+
+    enemie.update();
+    enemie.draw(); 
 
     player.update();
     player.draw();
+// }
 }
 
 animate();
@@ -134,17 +192,19 @@ addEventListener('keydown', ({ keyCode }) => {
     switch (keyCode) {
         case 79:
             console.log('left'); // O
-            if(player.position.x > 100) {
-            player.velocity.x -= .35;
-        } else {
-            player.velocity.x = 0;
-        }
+            if (player.position.x > 100) {
+                player.velocity.x -= .35;
+            } else {
+                player.velocity.x = 0;
+                background.cameraPan.x =0;
+            }
             break
 
         case 80:
             console.log('right');  // P
-            if(player.position.x + player.size.width <= gameCanvas.width /2 ) {
-            player.velocity.x += .35;
+            if (player.position.x + player.size.width <= gameCanvas.width / 2 &&
+            player.position.x + player.size.width > 100 ) {
+                player.velocity.x += .35;
             } else {
                 player.velocity.x = 0;
             }
@@ -153,17 +213,19 @@ addEventListener('keydown', ({ keyCode }) => {
 
         case 81:
             console.log('up'); // Q
-            if(player.position.x + player.size.width <= gameCanvas.width /2 && player.position.x > 100) {
-            player.velocity.y = - 20;
-        } else {
-            player.velocity.y = - 20;
-            player.velocity.x = 0;
-        }
+            if (player.position.x + player.size.width <= gameCanvas.width / 2 && player.position.x > 100) {
+                player.velocity.y = - 20;
+            } else {
+                player.velocity.y = - 20;
+                player.velocity.x = 0;
+                background.cameraPan.x =0;
+
+            }
             break
 
         case 65:
             console.log('down'); // A
-            if(player.position.x + player.size.width <= gameCanvas.width /2 && player.position.x > 100) {
+            if (player.position.x + player.size.width <= gameCanvas.width / 2 && player.position.x > 100) {
                 player.velocity.y = + 20;
             } else {
                 player.velocity.y = + 20;

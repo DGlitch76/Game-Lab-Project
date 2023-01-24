@@ -1,11 +1,18 @@
 
+/* --- Import Fonts --- */
+
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+
+
 
 /* --- body settings --- */
 
 body{
-background: linear-gradient(to top, #240b36, #c31432);
+/*background: linear-gradient(to bottom, #240b36, #c31432);
 background-repeat: no-repeat;
-background-size: cover;
+background-size: cover;*/
+background-color: antiquewhite;
 margin: 0;
 width: 100vw;
 height: 100vh;
@@ -16,6 +23,16 @@ height: 100vh;
 .main-container{
     width: 100vw;
     margin: auto;
+}
+
+.main-container h1 {
+    font-family: 'Permanent Marker', cursive;
+    font-weight: bold;
+    font-size: 5.5rem;
+}
+
+.main-container p {
+    font-family: 'Gloria Hallelujah', cursive;
 }
 
 /* --- canvas div --- */
