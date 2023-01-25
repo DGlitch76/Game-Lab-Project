@@ -121,6 +121,35 @@ let randomEnemyArr = [
 ];
 
 
+class Projectiles {
+    constructor(positionX, positionY) {
+        this.position = {
+            x: positionX,
+            y: positionY,
+        }
+        this.size = {
+            width: 100,
+            height: 10,
+        }
+        this.velocity = {
+            x: 0,
+            y: 0,
+        }
+    }
+
+    draw() {
+
+        ctx.drawImage(ironAttack, this.position.x, this.position.y, this.size.width, this.size.height)
+    }
+
+    update() {
+        this.position.x += 4.6
+    }
+}
+
+let ironAttackArr= [];
+
+
 //Should create background layers for parallax effect --- phase0 copied from class Player --- needs adaptation
 
 class Background {
@@ -170,6 +199,9 @@ baseBackground.src = '/images/background.png';
 const ironMan = new Image();
 ironMan.src = '/images/ironMan_static.png';
 
+const ironAttack = new Image();
+ironAttack.src = '/images/ironAttack.png';
+
 const brain = new Image();
 brain.src = '/images/brain_static.png';
 
@@ -210,10 +242,16 @@ function animate() {
         randomEnemyArr[i].update();
         randomEnemyArr[i].draw();
 
+        ironAttackArr.forEach(projectile => {
+            projectile.update();
+            projectile.draw();
+        }) 
+
     }
+
     player.update();
     player.draw();
-    // }
+
 }
 
 animate();
@@ -273,6 +311,9 @@ addEventListener('keydown', ({ keyCode }) => {
 
         case 32:
             console.log('attack'); // Space-Bar
+
+            ironAttackArr.push(new Projectiles(player.position.x + player.size.width, player.position.y + 100 ));
+
             break
 
         case 90:
