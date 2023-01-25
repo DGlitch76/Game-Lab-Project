@@ -30,9 +30,9 @@ function startGame() {
         startButton.style.display = "none";
         landingPage.style.display = "block";
     }
-  }
+}
 
-  
+
 //Player - needs
 //position (object with x and y) +
 //size (object with width and height) +
@@ -85,11 +85,11 @@ class Player {
     }
 }
 
-class Enemie {
-    constructor() {
+class Enemy {
+    constructor(positionX, positionY) {
         this.position = {
-            x: 800,
-            y: 250,
+            x: positionX,
+            y: positionY,
         }
         this.size = {
             width: 150,
@@ -107,10 +107,19 @@ class Enemie {
     }
 
     update() {
-        this.position.x -= 1.5
-
+        this.position.x -= 4.6
     }
 }
+
+let randomEnemyArr = [
+    new Enemy(1500, 250),
+    new Enemy(1800, 100),
+    new Enemy(1700, 300),
+    new Enemy(3900, 250),
+    new Enemy(4300, 50),
+    new Enemy(5700, 350),
+];
+
 
 //Should create background layers for parallax effect --- phase0 copied from class Player --- needs adaptation
 
@@ -133,7 +142,7 @@ class Background {
 
     draw() {
 
-         ctx.drawImage(baseBackground, this.position.x, this.position.y, this.size.width, this.size.height)
+        ctx.drawImage(baseBackground, this.position.x, this.position.y, this.size.width, this.size.height)
 
     }
 
@@ -142,16 +151,16 @@ class Background {
         this.position.y += this.cameraPan.y;
         this.position.x += this.cameraPan.x;
 
-        if (player.position.x + player.size.width >= gameCanvas.width / 2){
+        if (player.position.x + player.size.width >= gameCanvas.width / 2) {
             this.cameraPan.x = -10;
         } else if (player.position.x < 50 || this.position.x < 1) {
             this.cameraPan.x = 10;
-// trying to set pan limits
-        }else{ //if (this.position.x < - 5000 || player.position.x + player.size.width > background.size.width && playerCheck <= gameCanvas.width * 2){
+            // trying to set pan limits
+        } else { //if (this.position.x < - 5000 || player.position.x + player.size.width > background.size.width && playerCheck <= gameCanvas.width * 2){
             this.cameraPan.x = 0;
 
+        }
     }
-}
 }
 
 
@@ -166,7 +175,7 @@ brain.src = '/images/brain_static.png';
 
 const player = new Player();
 
-const enemie = new Enemie(); 
+const enemy = new Enemy();
 
 const background = new Background();
 
@@ -178,26 +187,33 @@ function animate() {
     ctx.fillStyle = 'white';
     ctx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
 
-// console.log(playerCheck)
+    // console.log(playerCheck)
 
-// if(background.position.x < 0){
-//     playerCheck -= .35
-// }else if (background.position.x > 0){
-//     playerCheck += .35
-// }
+    // if(background.position.x < 0){
+    //     playerCheck -= .35
+    // }else if (background.position.x > 0){
+    //     playerCheck += .35
+    // }
 
 
-//     if (playerCheck  > 0 ){
+    //     if (playerCheck  > 0 ){
 
     background.update();
     background.draw();
 
-    enemie.update();
-    enemie.draw(); 
+    for (let i = 0; i < randomEnemyArr.length; i++) {
+        if (randomEnemyArr[i].position.x < -200) {
+            randomEnemyArr[i].position.x = (gameCanvas.width + (Math.random() * 500));
+            randomEnemyArr[i].position.x -= 2;
+        }
 
+        randomEnemyArr[i].update();
+        randomEnemyArr[i].draw();
+
+    }
     player.update();
     player.draw();
-// }
+    // }
 }
 
 animate();
@@ -218,14 +234,14 @@ addEventListener('keydown', ({ keyCode }) => {
                 player.velocity.x -= .35;
             } else {
                 player.velocity.x = 0;
-                background.cameraPan.x =0;
+                background.cameraPan.x = 0;
             }
             break
 
         case 80:
             console.log('right');  // P
             if (player.position.x + player.size.width <= gameCanvas.width / 2 &&
-            player.position.x + player.size.width > 100 ) {
+                player.position.x + player.size.width > 100) {
                 player.velocity.x += .35;
             } else {
                 player.velocity.x = 0;
@@ -240,7 +256,7 @@ addEventListener('keydown', ({ keyCode }) => {
             } else {
                 player.velocity.y = - 20;
                 player.velocity.x = 0;
-                background.cameraPan.x =0;
+                background.cameraPan.x = 0;
 
             }
             break
