@@ -304,6 +304,8 @@ const enemy = new Enemy();
 const background = new Background();
 
 
+
+
 function animate() {
     window.requestAnimationFrame(animate);
     //console.log('GO GO GO')
@@ -376,7 +378,7 @@ function animate() {
                 console.log("GAMEOVER")
                 lose();
 
-            } else if (score >= 33) {
+            } else if (score >= 21) {
                 console.log("WIN")
                 win();
             }
