@@ -6,8 +6,13 @@ const ctx = gameCanvas.getContext('2d')
 //Getting Divs for display style (hide - show divs - game states)
 let landingPage = document.getElementById('landing-page');
 let startButton = document.getElementById('game-div');
-landingPage.style.display = "block"
+landingPage.style.display = "block";
 startButton.style.display = "none";
+
+let winner = document.getElementById('winner');
+let loser = document.getElementById('loser');
+winner.style.display = "none";
+loser.style.display = "none";
 // let lose =document.getElementById('');
 // let win =document.getElementById('');
 
@@ -36,26 +41,37 @@ function startGame() {
 }
 
 function lose() {
-    landingPage.style.display = "block";
-    if (startButton.style.display = "none") {
+    console.log("RUNNING GAMEOVER");
+    landingPage.style.display = "none";
+    if (startButton.style.display = "block") {
+        startButton.style.display = "none";
+        landingPage.style.display = "none";
+        winner.style.display = "none";
+        loser.style.display = "block";
+    } else {
         startButton.style.display = "block";
         landingPage.style.display = "none";
-        // animate(); --- blows up the game --- extra fast
-    } else {
-        startButton.style.display = "none";
-        landingPage.style.display = "block";
-    }
+        winner.style.display = "none";
+        loser.style.display = "block";
+        
+    } 
 }
 
 function win() {
-    landingPage.style.display = "block";
-    if (startButton.style.display = "none") {
+    console.log("RUNNING WINNING");
+    score=0;
+    landingPage.style.display = "none";
+    if (startButton.style.display = "block") {
+        startButton.style.display = "none";
+        landingPage.style.display = "none";
+        winner.style.display = "block";
+        loser.style.display = "none";
+    } else {
         startButton.style.display = "block";
         landingPage.style.display = "none";
-        // animate(); --- blows up the game --- extra fast
-    } else {
-        startButton.style.display = "none";
-        landingPage.style.display = "block";
+        winner.style.display = "none";
+        loser.style.display = "none";
+
     }
 }
 
@@ -91,8 +107,8 @@ class Player {
             y: 100,
         }
         this.size = {
-            width: 150,
-            height: 200,
+            width: 50,
+            height: 101,
         }
         this.velocity = {
             x: 0,
@@ -295,33 +311,44 @@ function animate() {
             projectile.draw();
 
             //remove enemies
+            //Projectile hit enemy
+            if (
+                projectile.position.x < randomEnemyArr[i].position.x + randomEnemyArr[i].size.width &&
+                projectile.position.x + projectile.size.width > randomEnemyArr[i].position.x &&
+                projectile.position.y < randomEnemyArr[i].position.y + 70 &&
+                projectile.position.y + projectile.size.height > randomEnemyArr[i].position.y
+            ) {
+                // randomEnemyArr.slice(ironAttackArr[i]);
 
-            // for (let i = 0; i < randomEnemyArr.length; i++) {
-                if (
-                    projectile.position.x < randomEnemyArr[i].position.x + randomEnemyArr[i].size.width &&
-                    projectile.position.x + projectile.size.width > randomEnemyArr[i].position.x &&
-                    projectile.position.y < randomEnemyArr[i].position.y + 75 &&
-                    projectile.position.y + projectile.size.height > randomEnemyArr[i].position.y
-                ) {
-                    // randomEnemyArr.slice(ironAttackArr[i]);
+                randomEnemyArr[i].position.x = 1500
+                projectile.position.x = 2000
 
-                    randomEnemyArr[i].position.x = 1500
-                    projectile.position.x = 2000
+                console.log(projectile.position.x, projectile.position.y)
 
-                    console.log(projectile.position.x, projectile.position.y)
+                score++
+                console.log(score)
 
-                    // score++
-                    // console.log(score)
+                console.log("collision detected")
+            }
+            console.log("no collision")
 
-                    console.log("collision detected")
-                }
-                console.log("no collision")
+            //enemy hits player (gameover)
 
-                // if(randomEnemyArr[i].position.x == 1500 && projectile.position.x == 2000){
-                //     score++
-                //     console.log(score)
-                // }
-            // }
+            if (
+                player.position.x < randomEnemyArr[i].position.x + randomEnemyArr[i].size.width &&
+                player.position.x + player.size.width > randomEnemyArr[i].position.x &&
+                player.position.y + player.size.height > randomEnemyArr[i].position.y &&
+                player.position.y < randomEnemyArr[i].position.y + 70
+            ) {
+                console.log("GAMEOVER")
+                lose();
+
+            } else if (score >= 33) {
+                console.log("WIN")
+                win();
+            }
+
+
         })
 
     }
