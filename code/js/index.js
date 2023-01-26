@@ -173,15 +173,15 @@ class Enemy {
     }
 
     update() {
-        this.position.x -= 4.5
+        this.position.x -= 3.6
 
         if(score >10 && score <15){
-            this.position.x -= 5.5
+            this.position.x -= 6
         } else if(score >=15 && score <25){
-            this.position.x -= 9
+            this.position.x -= 7.5
         }
         else if(score >=25){
-            this.position.x -= 15
+            this.position.x -= 9
         }
     }
 }
@@ -347,7 +347,7 @@ function animate() {
             ) {
                 // randomEnemyArr.slice(ironAttackArr[i]);
 
-                randomEnemyArr[i].position.x = 1500
+                randomEnemyArr[i].position.x = 1000
                 projectile.position.x = 2000
 
                 console.log(projectile.position.x, projectile.position.y)
@@ -378,10 +378,8 @@ function animate() {
             //projectile leaves canvas
             //move to count only first enemy 
             
-            if (
-                projectile.position.x > 1024
-            ) {
-                projectile.position.x = 10000
+            if (projectile.position.x > 1024) {
+                projectile.position.x = 6000
 
             }
 
