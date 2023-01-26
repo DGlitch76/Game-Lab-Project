@@ -1,0 +1,41 @@
+
+/* --- Import Fonts --- */
+
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap'); /*.main-container *h1*/
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap'); /*.main-container h2*/
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap'); /*.main-container p*/
+
+
+body{
+    /*background: linear-gradient(to bottom, #240b36, #c31432);
+    background-repeat: no-repeat;
+    background-size: cover;*/
+    background-color:aquamarine;
+    margin: 0;
+    padding: 0;
+    }
+
+.main-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-block: 2rem;
+    width: min(95%, 70rem);
+    margin-inline: auto;
+    background-color: rgb(33, 182, 6);
+    color:black; 
+
+    }
+
+.landing-page{
+    margin:0;
+    width: 100vw;
+    background-color: black;
+}
+
+.header{
+color:black;
+}
+
+.main-content{
+    
+}

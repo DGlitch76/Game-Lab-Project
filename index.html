@@ -16,16 +16,18 @@
 <body>
 
     <div class="main-container">
+
+<!-- LANDING PAGE-->
+
         <div class="landing-page" id="landing-page">
 
-            <div class="top-nav">
-                <span>
-                    <div id="logo-div"><img src="/images/avenger-logo-png.png" id="logo" class="logo"></div>
-                    <div id="h1-div"><h1>Stark Vs Brainctopus</h1></div>
-                </span>
+            <!--top bar-->
+            <div class="header">
+             <div> <img src="/images/avenger-logo-png.png" id="logo" class="logo"></div>  
+             <div> <h1>Stark Vs Brainctopus</h1></div>  
             </div>
 
-            <div class="intro">
+            <div>
                 <h2>Earth is being invaded by a Galactic Legion of Brainctopus Soldiers!!</h2>
                 <p> Brainctopus have searched the universe for millenium, looking for the their lost tribe, sent to
                     space while apocalyptic events
@@ -33,15 +35,24 @@
                     around that time. Now they're here,
                     to conquer our planet and save their lost tribe from our plates!!</p>
             </div>
-            <div class="game-start">
+
+
+            <div>
                 <img src="/images/StarkVsBrain_Brain_START.gif" id="players" class="players">
                 <!-- logo | menu -->
                 <!-- Instructions -->
+            </div>
+
+
+            <div>    
                 <button onclick="startGame()">
                     <h2>Start</h2>
                 </button>
             </div>
+
         </div>
+
+<!-- GAME STATE-->
 
         <div class="game-div" id="game-div">
             <!-- Should contain game info | playerName | Health | Score-->
@@ -50,6 +61,13 @@
             <!-- Show "we're all dead background at gameover  with restart button-->
         </div>
 
+
+<!-- WIN STATE-->
+        <div class="user-footer">
+            <!-- Name input | Start Btn (embeded restart with in game button ) | Close Game-->
+        </div>
+
+<!-- LOSE STATE-->
         <div class="user-footer">
             <!-- Name input | Start Btn (embeded restart with in game button ) | Close Game-->
         </div>

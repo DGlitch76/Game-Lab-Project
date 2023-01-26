@@ -6,8 +6,10 @@ const ctx = gameCanvas.getContext('2d')
 //Getting Divs for display style (hide - show divs - game states)
 let landingPage = document.getElementById('landing-page');
 let startButton = document.getElementById('game-div');
+landingPage.style.display = "block"
 startButton.style.display = "none";
-
+// let lose =document.getElementById('');
+// let win =document.getElementById('');
 
 
 
@@ -26,11 +28,43 @@ function startGame() {
     if (startButton.style.display = "none") {
         startButton.style.display = "block";
         landingPage.style.display = "none";
+        // animate(); --- blows up the game --- extra fast
     } else {
         startButton.style.display = "none";
         landingPage.style.display = "block";
     }
 }
+
+function lose() {
+    landingPage.style.display = "block";
+    if (startButton.style.display = "none") {
+        startButton.style.display = "block";
+        landingPage.style.display = "none";
+        // animate(); --- blows up the game --- extra fast
+    } else {
+        startButton.style.display = "none";
+        landingPage.style.display = "block";
+    }
+}
+
+function win() {
+    landingPage.style.display = "block";
+    if (startButton.style.display = "none") {
+        startButton.style.display = "block";
+        landingPage.style.display = "none";
+        // animate(); --- blows up the game --- extra fast
+    } else {
+        startButton.style.display = "none";
+        landingPage.style.display = "block";
+    }
+}
+
+
+
+
+let score = 0;
+
+
 
 
 //Player - needs
@@ -92,8 +126,8 @@ class Enemy {
             y: positionY,
         }
         this.size = {
-            width: 150,
-            height: 200,
+            width: 83,
+            height: 202,
         }
         this.velocity = {
             x: 0,
@@ -139,6 +173,7 @@ class Projectiles {
 
     draw() {
 
+
         ctx.drawImage(ironAttack, this.position.x, this.position.y, this.size.width, this.size.height)
     }
 
@@ -147,7 +182,17 @@ class Projectiles {
     }
 }
 
-let ironAttackArr= [];
+let ironAttackArr = [];
+
+
+//SCORES
+
+
+
+
+
+
+
 
 
 //Should create background layers for parallax effect --- phase0 copied from class Player --- needs adaptation
@@ -228,39 +273,73 @@ function animate() {
     // }
 
 
+
     //     if (playerCheck  > 0 ){
 
     background.update();
     background.draw();
 
+
+
     for (let i = 0; i < randomEnemyArr.length; i++) {
         if (randomEnemyArr[i].position.x < -200) {
             randomEnemyArr[i].position.x = (gameCanvas.width + (Math.random() * 500));
-            randomEnemyArr[i].position.x -= 3;
         }
 
         randomEnemyArr[i].update();
         randomEnemyArr[i].draw();
 
+
         ironAttackArr.forEach(projectile => {
             projectile.update();
             projectile.draw();
 
-//REMOVE ENEMIES??
-            for (let i = 0; i < randomEnemyArr.length; i++) {
-                if (randomEnemyArr[i].position.x <= projectile.position.x) {
-                    randomEnemyArr.slice(randomEnemyArr[i]);
-                }}
-        })        
+            //remove enemies
+
+            // for (let i = 0; i < randomEnemyArr.length; i++) {
+                if (
+                    projectile.position.x < randomEnemyArr[i].position.x + randomEnemyArr[i].size.width &&
+                    projectile.position.x + projectile.size.width > randomEnemyArr[i].position.x &&
+                    projectile.position.y < randomEnemyArr[i].position.y + 75 &&
+                    projectile.position.y + projectile.size.height > randomEnemyArr[i].position.y
+                ) {
+                    // randomEnemyArr.slice(ironAttackArr[i]);
+
+                    randomEnemyArr[i].position.x = 1500
+                    projectile.position.x = 2000
+
+                    console.log(projectile.position.x, projectile.position.y)
+
+                    // score++
+                    // console.log(score)
+
+                    console.log("collision detected")
+                }
+                console.log("no collision")
+
+                // if(randomEnemyArr[i].position.x == 1500 && projectile.position.x == 2000){
+                //     score++
+                //     console.log(score)
+                // }
+            // }
+        })
 
     }
+
+
 
     player.update();
     player.draw();
 
+
+
+
 }
 
+
+
 animate();
+
 
 
 // Keyboard controls - player movement
@@ -319,8 +398,7 @@ addEventListener('keydown', ({ keyCode }) => {
         case 32:
             console.log('attack'); // Space-Bar
 
-            ironAttackArr.push(new Projectiles(player.position.x + 50, player.position.y + 100 ));
-
+            ironAttackArr.push(new Projectiles(player.position.x + 50, player.position.y + 100));
             break
 
         case 90:
