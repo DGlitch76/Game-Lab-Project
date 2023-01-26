@@ -147,7 +147,7 @@ class Projectiles {
     }
 }
 
-let ironAttackArr= [];
+let ironAttackArr = [];
 
 
 //Should create background layers for parallax effect --- phase0 copied from class Player --- needs adaptation
@@ -233,6 +233,7 @@ function animate() {
     background.update();
     background.draw();
 
+    //
     for (let i = 0; i < randomEnemyArr.length; i++) {
         if (randomEnemyArr[i].position.x < -200) {
             randomEnemyArr[i].position.x = (gameCanvas.width + (Math.random() * 500));
@@ -243,14 +244,32 @@ function animate() {
         randomEnemyArr[i].draw();
 
         ironAttackArr.forEach(projectile => {
+
+
             projectile.update();
             projectile.draw();
-        }) 
+        })
+
 
     }
 
     player.update();
     player.draw();
+
+    // remove enemies when hit ??!!?!!?%$&$#%#&%$/&%F(&FG)
+
+    randomEnemyArr.forEach(projectile => {
+        let count = 0;
+        if (randomEnemyArr[i].position.x + randomEnemyArr[i].size.width >= projectile.position.x + projectile.size.width) {
+            ironAttackArr.slice(randomEnemyArr[i])
+        } 
+        if (ironAttackArr.slice(randomEnemyArr[i])){
+            count++;
+        }
+
+    })
+
+    
 
 }
 
@@ -312,7 +331,7 @@ addEventListener('keydown', ({ keyCode }) => {
         case 32:
             console.log('attack'); // Space-Bar
 
-            ironAttackArr.push(new Projectiles(player.position.x + player.size.width, player.position.y + 100 ));
+            ironAttackArr.push(new Projectiles(player.position.x, player.position.y + 100));
 
             break
 
