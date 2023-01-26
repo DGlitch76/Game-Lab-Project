@@ -96,6 +96,12 @@ function win() {
 
 let score = 0;
 
+function drawScore() {
+    ctx.font = "40px Georgia Sans-serif";
+    ctx.fillStyle = "white";
+    ctx.fillText(`Score: ${score}`, gameCanvas.width -200, 50);
+  }
+
 
 
 
@@ -162,7 +168,7 @@ class Enemy {
             height: 202,
         }
         this.velocity = {
-            x: 0,
+            x: (Math.random() * 4),
             y: 0,
         }
     }
@@ -173,15 +179,15 @@ class Enemy {
     }
 
     update() {
-        this.position.x -= 3.6
+        this.position.x -= this.velocity.x
 
         if(score >10 && score <15){
-            this.position.x -= 6
+            this.position.x -= 3.6
         } else if(score >=15 && score <25){
-            this.position.x -= 7.5
+            this.position.x -= 5.4
         }
         else if(score >=25){
-            this.position.x -= 9
+            this.position.x -=6.3
         }
     }
 }
@@ -320,7 +326,7 @@ function animate() {
     background.update();
     background.draw();
 
-
+    drawScore();
 
     for (let i = 0; i < randomEnemyArr.length; i++) {
         if (randomEnemyArr[i].position.x < -200) {
@@ -412,10 +418,10 @@ animate();
 // some code should run based on "if key pressed" and or "if click" event // How to do this?
 
 addEventListener('keydown', ({ keyCode }) => {
-    console.log(keyCode);
+    // console.log(keyCode);
     switch (keyCode) {
         case 79:
-            console.log('left'); // O
+            // console.log('left'); // O
             if (player.position.x > 100) {
                 player.velocity.x -= .35;
             } else {
@@ -425,7 +431,7 @@ addEventListener('keydown', ({ keyCode }) => {
             break
 
         case 80:
-            console.log('right');  // P
+            // console.log('right');  // P
             if (player.position.x + player.size.width <= gameCanvas.width / 2 &&
                 player.position.x + player.size.width > 100) {
                 player.velocity.x += .35;
@@ -436,7 +442,7 @@ addEventListener('keydown', ({ keyCode }) => {
 
 
         case 81:
-            console.log('up'); // Q
+            // console.log('up'); // Q
             if (player.position.x + player.size.width <= gameCanvas.width / 2 && player.position.x > 100) {
                 player.velocity.y = - 20;
             } else {
@@ -448,7 +454,7 @@ addEventListener('keydown', ({ keyCode }) => {
             break
 
         case 65:
-            console.log('down'); // A
+            // console.log('down'); // A
             if (player.position.x + player.size.width <= gameCanvas.width / 2 && player.position.x > 100) {
                 player.velocity.y = + 20;
             } else {
@@ -458,47 +464,47 @@ addEventListener('keydown', ({ keyCode }) => {
             break
 
         case 32:
-            console.log('attack'); // Space-Bar
+            // console.log('attack'); // Space-Bar
 
             ironAttackArr.push(new Projectiles(player.position.x + 50, player.position.y + 100));
             break
 
         case 90:
-            console.log('defense'); // Z
+            // console.log('defense'); // Z
             break
     }
 
 });
 
 addEventListener('keyup', ({ keyCode }) => {
-    console.log(keyCode);
+    // console.log(keyCode);
     switch (keyCode) {
         case 79:
-            console.log('left'); // O
+            // console.log('left'); // O
             player.velocity.x = 0;
             break
 
         case 80:
-            console.log('right');  // P
+            // console.log('right');  // P
             player.velocity.x = 0;
             break
 
         case 81:
-            console.log('up'); // Q
+            // console.log('up'); // Q
             player.velocity.y = 0;
             break
 
         case 65:
-            console.log('down'); // A
+            // console.log('down'); // A
             player.velocity.y = 0;
             break
 
         case 32:
-            console.log('attack'); // Space-Bar
+            // console.log('attack'); // Space-Bar
             break
 
         case 90:
-            console.log('defense'); // Z
+            // console.log('defense'); // Z
             break
     }
 
