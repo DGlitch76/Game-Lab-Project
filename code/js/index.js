@@ -26,9 +26,21 @@ ctx.fillStyle = 'white';
 ctx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
 
 
+var elem = document.documentElement;
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
+}
+
 // States Control // Landing page - Game Page - Game Over
 
 function startGame() {
+    openFullscreen();
     landingPage.style.display = "block";
     if (startButton.style.display = "none") {
         startButton.style.display = "block";
@@ -38,7 +50,11 @@ function startGame() {
         startButton.style.display = "none";
         landingPage.style.display = "block";
     }
+
+    
 }
+
+
 
 function lose() {
     console.log("RUNNING GAMEOVER");
@@ -157,7 +173,16 @@ class Enemy {
     }
 
     update() {
-        this.position.x -= 4.6
+        this.position.x -= 4.5
+
+        if(score >10 && score <15){
+            this.position.x -= 5.5
+        } else if(score >=15 && score <25){
+            this.position.x -= 9
+        }
+        else if(score >=25){
+            this.position.x -= 15
+        }
     }
 }
 
@@ -312,6 +337,8 @@ function animate() {
 
             //remove enemies
             //Projectile hit enemy
+
+
             if (
                 projectile.position.x < randomEnemyArr[i].position.x + randomEnemyArr[i].size.width &&
                 projectile.position.x + projectile.size.width > randomEnemyArr[i].position.x &&
@@ -346,6 +373,16 @@ function animate() {
             } else if (score >= 33) {
                 console.log("WIN")
                 win();
+            }
+
+            //projectile leaves canvas
+            //move to count only first enemy 
+            
+            if (
+                projectile.position.x > 1024
+            ) {
+                projectile.position.x = 10000
+
             }
 
 

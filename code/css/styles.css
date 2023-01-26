@@ -73,8 +73,16 @@ height: 100vh;
 /* --- game div --- */
 
 .game-div {
-    display: block;
+   width: 100vw;
+   height: 100vh;
+   background-color: antiquewhite;
+
+}
+
+/* --- game div --- */
+
+.loser {
+
    margin: auto;
     background-color: antiquewhite;
-
 }
