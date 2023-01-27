@@ -25,10 +25,11 @@ Game General Guidelines ---------- ---------- ---------- ----
 
   Player moves up and down.
 
-  Arrows Left and Right scroll de brackground layers right to left. (left right motion illusion)
+  Arrows Left and Right scroll de brackground layers right to left. (left right motion illusion). Spacebar triggers Baby Stark weapons.
+
   Left and right translates as forward and backwards.
 
-  Enemies flow from right to left in random positions.
+  Enemies flow from right to left in random position and velocity.
 
   Both player and enemies have fire attacks.
 

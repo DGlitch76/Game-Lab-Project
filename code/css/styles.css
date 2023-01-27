@@ -45,7 +45,7 @@ height: 100vh;
 .main-container{
     width: 70%;
     margin: auto;
-}
+    margin-top: 100px;}
 
 .main-container h1 {
     top: 5%;
@@ -76,7 +76,7 @@ height: 100vh;
    width: 100vw;
    height: 100vh;
    background-color: antiquewhite;
-
+   margin-top: 100px;
 }
 
 /* --- game div --- */
@@ -86,3 +86,23 @@ height: 100vh;
    margin: auto;
     background-color: antiquewhite;
 }
+
+
+/*from the NPM Clone*/
+
+.create-org-btn button{
+    width: 300px;
+    font-size: larger;
+    border: none;
+    color:white;
+    background-color: black;
+    padding: 20px;
+    margin:20px 10px;
+    border-style: groove;
+    border-radius: 10rem;
+  }
+
+  .create-org-btn{
+    text-align: center;
+    margin:auto;
+  }
