@@ -16,39 +16,49 @@
 <body>
 
 
-    <div class="main-container">
+    <div class="mockup">
 
-<!-- LANDING PAGE-->
+        <!-- LANDING PAGE-->
 
-        <div class="landing-page" id="landing-page" style="margin-top: 100px;">
+        <div class="mockup" id="mockup">
             <img src="/resrc/LandingPage_MOCKUP2.png">
-            <div  class="create-org-btn">    
+
+
+
+            <div class="create-org-btn">
                 <button onclick="startGame()">
                     Start
                 </button>
             </div>
-
         </div>
-
-<!-- GAME STATE-->
-
-        <div class="game-div" id="game-div">
-            <!-- Should contain game info | playerName | Health | Score-->
-            <canvas id="canvas" class="game-canvas"></canvas>
-            <!-- Should collect playerName + Score and show at game win HighScore <ul> -->
-            <!-- Show "we're all dead background at gameover  with restart button-->
-        </div>
+    </div>
 
 
-<!-- WIN STATE-->
-        <div class="winner" id="winner" style="margin-top: 100px;">
-           <img src="/resrc/WINPage_MOCKUP.png">
-        </div>
 
-<!-- LOSE STATE-->
-        <div class="loser" id="loser">
-            <img src="/resrc/LosePage_MOCKUP.png" style="display: block; margin-top: 100px;">
-        </div>
+
+
+    <!-- GAME STATE-->
+
+    <div class="game" id="game">
+        <!-- Should contain game info | playerName | Health | Score-->
+        
+        <canvas id="canvas" class="game-canvas"></canvas>
+        
+        Press ESC to exit fullscreen
+        <!-- Should collect playerName + Score and show at game win HighScore <ul> -->
+        <!-- Show "we're all dead background at gameover  with restart button-->
+    </div>
+
+
+    <!-- WIN STATE-->
+    <div class="winner" id="winner" style="margin-top: 100px;">
+        <img src="/resrc/WINPage_MOCKUP.png">
+    </div>
+
+    <!-- LOSE STATE-->
+    <div class="loser" id="loser">
+        <img src="/resrc/LosePage_MOCKUP.png" style="display: block; margin-top: 100px;">
+    </div>
     </div>
 
 

@@ -4,8 +4,8 @@ const gameCanvas = document.querySelector('canvas')
 const ctx = gameCanvas.getContext('2d')
 
 //Getting Divs for display style (hide - show divs - game states)
-let landingPage = document.getElementById('landing-page');
-let startButton = document.getElementById('game-div');
+let landingPage = document.getElementById('mockup');
+let startButton = document.getElementById('game');
 landingPage.style.display = "block";
 startButton.style.display = "none";
 
@@ -82,6 +82,8 @@ function win() {
         landingPage.style.display = "none";
         winner.style.display = "block";
         loser.style.display = "none";
+        enemy.velocity.x = 0;
+
     } else {
         startButton.style.display = "block";
         landingPage.style.display = "none";
@@ -247,8 +249,8 @@ let ironAttackArr = [];
 class Background {
     constructor() {
         this.position = {
-            x: -10,
-            y: -10,
+            x: 0,
+            y: -20,
         }
         this.size = {
             width: 6467,

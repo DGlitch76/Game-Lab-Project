@@ -2,77 +2,84 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-  <link rel="stylesheet" href="/code/css/proto.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/code/css/proto.css">
 
-  <title>Marvel vs DC</title>
+    <title>Marvel vs DC</title>
+
 </head>
+
 
 <body>
 
-  <!-- LANDING PAGE-->
 
-  <div class="landing-page" id="landing-page">
+    <div class="newLayout">
 
-    <!--top bar-->
-    <section class="header">
-      
-  <div>
-    <h1>Baby Stark Vs Brainctopus</h1>
-  </div>
-  </section>
-
-  <section class="main-content">
-    <div style="background-color:blue;">
-      <h2>Subtitle</h2>
-      <p> Game Play</p>
+        <div class=".box1">
+            <h1>Box1</h1>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic,
+            repellendus, quam rerum, exercitationem delectus
+            commodi amet blanditiis alias perferendis vitae esse asperiores
+            numquam officia saepe! Fugit tempore incidunt quae ea!
+        </div>
+        <div class=".box2">
+            <h1>Box2</h1>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Tempora doloribus voluptatem maiores asperiores nobis repellendus
+            voluptatibus culpa at, necessitatibus placeat!
+        </div>
+        <div class=".box3">
+            <h1>Box3</h1>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Nisi consectetur quod iure officiis vero eius dolores similique sequi
+            recusandae earum nemo sapiente dicta nesciunt minus,
+            praesentium possimus adipisci, voluptates laudantium quam a?
+            Repellat dolores sapiente dolore, beatae omnis quod excepturi?
+        </div>
+        <div class=".box4">
+            <h1>Box4</h1>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            a aut vero sint necessitatibus minima recusandae exercitationem distinctio,
+            incidunt sunt modi tempora rerum omnis illo hic itaque at illum aspernatur
+            autem. Voluptates velit corrupti incidunt eos. Porro inventore dolor atque
+            accusamus temporibus ipsam adipisci perspiciatis deserunt soluta rerum
+            impedit animi at laudantium voluptatibus, a magnam tempore consequatur
+            et molestias voluptatem, accusantium ipsa eos. Iusto dolor necessitatibus
+            aliquid perspiciatis, maiores cum hic vero, asperiores accusantium corporis
+            possimus aut, maxime magnam consequuntur quos.
+        </div>
     </div>
 
-    <div style="background-color:brown;">
-      <p>Players Gif</p>
+    <!-- GAME STATE-->
+
+    <div class="game" id="game">
+        <!-- Should contain game info | playerName | Health | Score-->
+        <canvas id="canvas" class="game-canvas"></canvas>
+        <!-- Should collect playerName + Score and show at game win HighScore <ul> -->
+        <!-- Show "we're all dead background at gameover  with restart button-->
     </div>
-  </section>
 
 
-  <div>
-    <section style="background-color:lightgreen;" class="footer">
-      <button onclick="startGame()">
-        <h2>Start Button</h2>
-      </button>
-      <section>
-  </div>
+    <!-- WIN STATE-->
+    <div class="winner" id="winner" style="margin-top: 100px;">
+        <img src="/resrc/WINPage_MOCKUP.png">
+    </div>
 
-  </div>
-
-  <!-- GAME STATE-->
-
-  <div class="game-div" id="game-div" style="background-color: yellow;">
-    <!-- Should contain game info | playerName | Health | Score-->
-    <canvas id="canvas" class="game-canvas"></canvas>
-    <!-- Should collect playerName + Score and show at game win HighScore <ul> -->
-    <!-- Show "we're all dead background at gameover  with restart button-->
-  </div>
-
-
-  <!-- WIN STATE-->
-  <div class="win"> Win
-    <!-- Name input | Start Btn (embeded restart with in game button ) | Close Game-->
-  </div>
-
-  <!-- LOSE STATE-->
-  <div class="lose"> Loose
-    <!-- Name input | Start Btn (embeded restart with in game button ) | Close Game-->
-  </div>
+    <!-- LOSE STATE-->
+    <div class="loser" id="loser">
+        <img src="/resrc/LosePage_MOCKUP.png" style="display: block; margin-top: 100px;">
+    </div>
+    </div>
 
 
 
 
-  <script type="text/javascript" src="./code/js/sprites.js"></script>
-  <script type="text/javascript" src="./code/js/players.js"></script>
-  <script type="text/javascript" src="/code/js/index.js"></script>
+    <script type="text/javascript" src="./code/js/sprites.js"></script>
+    <script type="text/javascript" src="./code/js/classes.js"></script>
+    <script type="text/javascript" src="./code/js/index.js"></script>
 </body>
 
 </html>

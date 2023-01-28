@@ -1,108 +1,85 @@
-
 /* --- Import Fonts --- */
 
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap'); /*.main-container *h1*/
-@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap'); /*.main-container h2*/
-@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap'); /*.main-container p*/
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+/*.main-container *h1*/
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+/*.main-container h2*/
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+/*.main-container p*/
 
 
 /* --- body settings --- */
 
-body{
-/*background: linear-gradient(to bottom, #240b36, #c31432);
+body {
+    /*background: linear-gradient(to bottom, #240b36, #c31432);
 background-repeat: no-repeat;
 background-size: cover;*/
-background-color: antiquewhite;
-margin: 0;
-width: 100vw;
-height: 100vh;
+    scroll-behavior: none;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
 }
 
 /* --- main cointainer div --- */
 /*landing-page*/
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-.landing-page{
-        margin: 5rem auto;
-        width: min(90%, 75rem);
-        display: grid;
-        grid-auto-flow: row;
-        gap: 2em;
-}
-
-.logo {
-    width: 20%;
-}
-.players {
-    width: 50%;
-}
 
 
-.main-container{
-    width: 70%;
-    margin: auto;
-    margin-top: 100px;}
-
-.main-container h1 {
-    top: 5%;
-    right: 20%;
-    font-family: 'Permanent Marker', cursive;
-    font-weight: bold;
-    font-size: 3rem;
-    float: right;
-    padding-top: 0;
-}
-
-.main-container h2 {
-    font-family: 'Rock Salt', cursive;
-    font-weight: bold;
-    font-size: 1.25em;
-    text-align:left;
-}
-
-
-.main-container p {
-    font-family: 'Gloria Hallelujah', cursive;
-    text-align:left;
+.mockup {
+    display: flex;
+    flex-direction: column;
 }
 
 /* --- game div --- */
 
-.game-div {
-   width: 100vw;
-   height: 100vh;
-   background-color: antiquewhite;
-   margin-top: 100px;
+.game {
+    padding: 0;
+    margin: auto;
+    display: block;
+    width: 1024px;
+    height: 578px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
 }
 
 /* --- game div --- */
 
 .loser {
-
-   margin: auto;
+    margin: auto;
     background-color: antiquewhite;
 }
 
 
 /*from the NPM Clone*/
 
-.create-org-btn button{
+.create-org-btn button {
     width: 300px;
     font-size: larger;
     border: none;
-    color:white;
+    color: white;
     background-color: black;
     padding: 20px;
-    margin:20px 10px;
+    margin: 20px 10px;
     border-style: groove;
     border-radius: 10rem;
-  }
+}
 
-  .create-org-btn{
+.create-org-btn button ::hover {
+    width: 300px;
+    font-size: larger;
+    border: none;
+    color: white;
+    background-color: rgb(174, 3, 3);
+    padding: 20px;
+    margin: 20px 10px;
+    border-style: groove;
+    border-radius: 10rem;
+}
+
+.create-org-btn {
     text-align: center;
-    margin:auto;
-  }
+    margin: auto;
+}
